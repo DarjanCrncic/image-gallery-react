@@ -56,7 +56,7 @@ const Gallery = () => {
       <ImageModal
         title={imageInfo.title}
         description={imageInfo.description}
-        path={imageInfo.path_to_file}
+        path={imageInfo.path}
         handleClose={handleClose}
         open={open}
       />
