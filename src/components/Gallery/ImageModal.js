@@ -14,42 +14,31 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     transform: 'translate(-50%, -50%)'
   },
+  image: {
+    width: 200
+  }
+  
 }));
 
-export default function SimpleModal() {
+export default function ImageModal(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleCancelClick = () => {
-    setOpen(false);
-  }
+  
 
   const body = (
     <div className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
+      <h2 id="simple-modal-title">{props.title}</h2>
       <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+        {props.description}
       </p>
-      <button onClick={handleCancelClick}>Close</button>
+      <button onClick={props.handleClose}>Close</button>
     </div>
   );
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={props.open}
+        onClose={props.handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >

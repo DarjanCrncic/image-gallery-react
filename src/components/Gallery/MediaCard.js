@@ -24,6 +24,14 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
 
+  const showImageInfoHandler = () => {
+    props.onClickInfo({
+      title: props.title,
+      description: props.description,
+      path: props.path,
+    });
+  };
+
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -45,7 +53,7 @@ export default function MediaCard(props) {
         <Button size="small" color="primary">
           Share
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={showImageInfoHandler}>
           Learn More
         </Button>
       </CardActions>
