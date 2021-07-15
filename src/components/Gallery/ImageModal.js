@@ -1,8 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { Button } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
+import Magnifier from "react-magnifier";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -17,15 +17,23 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)",
     display: "flex",
     flexWrap: "wrap",
-    fontSize: "1.3rem",
+    fontSize: "1.2rem",
   },
 
   image: {
     width: "100%",
   },
 
-  test: {
-    maxWidth: 345,
+  bodyImage: {
+    maxWidth: 600,
+    display: "inline-block",
+    marginRight: "auto",
+    marginLeft: "auto",
+    minWidth: 200,
+  },
+
+  bodyText: {
+    maxWidth: 350,
     display: "inline-block",
     marginRight: "auto",
     marginLeft: "auto",
@@ -38,12 +46,17 @@ export default function ImageModal(props) {
 
   const body = (
     <Container className={classes.paper}>
-      <div className={classes.test}>
+      <div className={classes.bodyText}>
         <h2>{props.title}</h2>
         <p>{props.description}</p>
       </div>
-      <div className={classes.test}>
-        <img src={props.path} alt="Preview" className={classes.image}></img>
+      <div className={classes.bodyImage}>
+        <Magnifier
+          src={props.path}
+          width={"100%"}
+          mgWidth={150}
+          mgHeight={150}
+        />
       </div>
     </Container>
   );

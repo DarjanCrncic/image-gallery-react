@@ -45,7 +45,7 @@ export default function MediaCard(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.description}
+            {props.shortendDescription}
           </Typography>
         </CardContent>
       </CardActionArea>

@@ -41,11 +41,18 @@ const Gallery = () => {
     <React.Fragment>
       <Container maxWidth="lg" className={classes.container}>
         {images.map((image) => {
+          
+          let shortendDescription = image.description;
+          if (shortendDescription.length > 50) {
+            let chunks = shortendDescription.match(/.{1,80}(\s|$)/g);
+            shortendDescription = chunks[0] + '...';
+          }
           return (
             <MediaCard
               key={image.id}
               title={image.title}
               description={image.description}
+              shortendDescription={shortendDescription}
               path={image.path_to_file}
               painted_at={image.painted_at}
               onClickInfo={handleOpen}
