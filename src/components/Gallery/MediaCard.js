@@ -43,7 +43,7 @@ export default function MediaCard(props) {
 
   return (
     <Card className={classes.root}>
-      <Fade duration={3000} className={classes.fadeDiv}>
+      <Fade duration={2000} className={classes.fadeDiv}>
         <CardActionArea onClick={showImageInfoHandler}>
           <CardMedia
             className={classes.media}

@@ -7,30 +7,50 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import Button from "@material-ui/core/Button";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+  },
+  header: {
+    backgroundColor: "#fff",
+    color: "white",
+    background: "linear-gradient(90deg, #159015, #26ac29, #3cc453)",
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     [theme.breakpoints.down("xs")]: {
-      flexGrow: 1
-    }
+      flexGrow: 1,
+    },
+    fontSize: '1.6rem',
   },
   headerOptions: {
     display: "flex",
     flex: 1,
-    justifyContent: "space-evenly"
-  }
+    justifyContent: "flex-end",
+    background: "transparent",
+  },
+  headerButton: {
+    marginLeft: 20,
+    marginRight: 20,
+    background: "transparent",
+    color: "inherit",
+    padding: 0,
+    border: "none",
+    outline: "none",
+    fontSize: "1.4rem",
+    "&:hover": {
+      transform: "scale(1.02) ",
+      color: "#eef",
+    },
+  },
 }));
 
-const Header = props => {
+const Header = (props) => {
   const { history } = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -38,40 +58,40 @@ const Header = props => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
-  const handleMenu = event => {
+  const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClick = pageURL => {
+  const handleMenuClick = (pageURL) => {
     history.push(pageURL);
     setAnchorEl(null);
   };
 
-  const handleButtonClick = pageURL => {
+  const handleButtonClick = (pageURL) => {
     history.push(pageURL);
   };
 
   const menuItems = [
     {
       menuTitle: "Home",
-      pageURL: "/"
+      pageURL: "/",
     },
     {
-      menuTitle: "Contact",
-      pageURL: "/contact"
+      menuTitle: "Gallery",
+      pageURL: "/gallery",
     },
     {
       menuTitle: "About",
-      pageURL: "/about"
-    }
+      pageURL: "/about",
+    },
   ];
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            Jadrankine Slike
           </Typography>
           {isMobile ? (
             <>
@@ -89,20 +109,23 @@ const Header = props => {
                 anchorEl={anchorEl}
                 anchorOrigin={{
                   vertical: "top",
-                  horizontal: "right"
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
                   vertical: "top",
-                  horizontal: "right"
+                  horizontal: "right",
                 }}
                 open={open}
                 onClose={() => setAnchorEl(null)}
               >
-                {menuItems.map(menuItem => {
+                {menuItems.map((menuItem) => {
                   const { menuTitle, pageURL } = menuItem;
                   return (
-                    <MenuItem key={menuTitle} onClick={() => handleMenuClick(pageURL)}>
+                    <MenuItem
+                      key={menuTitle}
+                      onClick={() => handleMenuClick(pageURL)}
+                    >
                       {menuTitle}
                     </MenuItem>
                   );
@@ -111,24 +134,18 @@ const Header = props => {
             </>
           ) : (
             <div className={classes.headerOptions}>
-              <Button
-                variant="contained"
-                onClick={() => handleButtonClick("/")}
-              >
-                HOME
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => handleButtonClick("/contact")}
-              >
-                GALLERY
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => handleButtonClick("/about")}
-              >
-                ABOUT
-              </Button>
+              {menuItems.map((menuItem) => {
+                const { menuTitle, pageURL } = menuItem;
+                return (
+                  <button
+                    key={menuTitle}
+                    onClick={() => handleButtonClick(pageURL)}
+                    className={classes.headerButton}
+                  >
+                    {menuTitle}
+                  </button>
+                );
+              })}
             </div>
           )}
         </Toolbar>

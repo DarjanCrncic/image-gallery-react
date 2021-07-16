@@ -13,7 +13,7 @@ function App() {
         <Route exact from="/" render={(props) => <Home {...props} />} />
         <Route
           exact
-          path="/contact"
+          path="/gallery"
           render={(props) => <Gallery {...props} />}
         />
         <Route exact path="/about" render={(props) => <About {...props} />} />

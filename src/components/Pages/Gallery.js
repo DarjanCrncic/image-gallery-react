@@ -4,7 +4,6 @@ import MediaCard from "../Gallery/MediaCard";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageModal from "../Gallery/ImageModal";
-import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -60,7 +59,7 @@ const Gallery = () => {
           );
         })}
       </Container>
-      <Fade top duration={3000}>
+
       <ImageModal
         title={imageInfo.title}
         description={imageInfo.description}
@@ -68,7 +67,6 @@ const Gallery = () => {
         handleClose={handleClose}
         open={open}
       />
-      </Fade>
     </React.Fragment>
   );
 };
