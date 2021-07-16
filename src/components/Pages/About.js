@@ -1,8 +1,18 @@
 import React from "react";
-import Magnifier from "react-magnifier";
+import ProgressiveImage from "react-progressive-image";
 
 const About = () => {
-  return <Magnifier src='/images/test.jpg' width={'100%'} mgWidth={250} mgHeight={250} />;
+  return (
+    <div >
+      <ProgressiveImage
+        src="images/drvo.jpg"
+        placeholder="images/drvo-small.jpg"
+      >
+        {(src) => <img style={{height: '200px'}} src={src} alt="an prop" />}
+      </ProgressiveImage>
+      
+    </div>
+  );
 };
 
 export default About;

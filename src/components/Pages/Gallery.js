@@ -4,6 +4,7 @@ import MediaCard from "../Gallery/MediaCard";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import ImageModal from "../Gallery/ImageModal";
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const Gallery = () => {
   const classes = useStyles();
   const [images, setImages] = useState([]);
-  const [imageInfo, setImageInfo] = useState('');
+  const [imageInfo, setImageInfo] = useState("");
   const [open, setOpen] = React.useState(false);
 
   const handleClose = () => {
@@ -35,17 +36,16 @@ const Gallery = () => {
   const handleOpen = (image) => {
     setOpen(true);
     setImageInfo(image);
-  }
+  };
 
   return (
     <React.Fragment>
       <Container maxWidth="lg" className={classes.container}>
         {images.map((image) => {
-          
           let shortendDescription = image.description;
           if (shortendDescription.length > 50) {
             let chunks = shortendDescription.match(/.{1,80}(\s|$)/g);
-            shortendDescription = chunks[0] + '...';
+            shortendDescription = chunks[0] + "...";
           }
           return (
             <MediaCard
@@ -60,6 +60,7 @@ const Gallery = () => {
           );
         })}
       </Container>
+      <Fade top duration={3000}>
       <ImageModal
         title={imageInfo.title}
         description={imageInfo.description}
@@ -67,6 +68,7 @@ const Gallery = () => {
         handleClose={handleClose}
         open={open}
       />
+      </Fade>
     </React.Fragment>
   );
 };

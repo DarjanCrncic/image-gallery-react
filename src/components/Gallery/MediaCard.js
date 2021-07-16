@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles({
   root: {
@@ -15,9 +16,17 @@ const useStyles = makeStyles({
     margin: "auto",
     marginTop: 30,
     minWidth: 300,
+    "&:hover": {
+      transform: "scale(1.02) ",
+    },
   },
   media: {
     height: 180,
+  },
+  fadeDiv: {
+    display: "inline-block !important",
+    margin: "auto",
+    marginTop: 30,
   },
 });
 
@@ -34,29 +43,28 @@ export default function MediaCard(props) {
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.path}
-          title={props.title}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.shortendDescription}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary" onClick={showImageInfoHandler}>
-          Learn More
-        </Button>
-      </CardActions>
+      <Fade duration={3000} className={classes.fadeDiv}>
+        <CardActionArea onClick={showImageInfoHandler}>
+          <CardMedia
+            className={classes.media}
+            image={props.path}
+            title={props.title}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {props.shortendDescription}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary" >
+            Learn More
+          </Button>
+        </CardActions>
+      </Fade>
     </Card>
   );
 }
