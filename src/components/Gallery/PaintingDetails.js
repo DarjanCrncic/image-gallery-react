@@ -1,13 +1,14 @@
 import { Grid, Container, Box, Typography } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Magnifier from "react-magnifier";
+import "@brainhubeu/react-carousel/lib/style.css";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     marginTop: 20,
+    background: "white",
+    height: "80%",
   },
   image: {
     maxWidth: "100%",
@@ -21,22 +22,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Paintings = (props) => {
-  let { id } = useParams();
+const PaintingDetails = (props) => {
   const classes = useStyles();
-  const [imageInfo, setImageInfo] = useState("");
-
-  useEffect(() => {
-    getImageInfo();
-  }, []);
-
-  const getImageInfo = async () => {
-    const response = await axios.get("/images/find/" + id);
-    const year = response.data.painted_at.slice(0, 4);
-    const newInfo = await { ...response.data, painted_at: year + "." };
-    setImageInfo(newInfo);
-  };
-
+  const imageInfo = props.imageInfo;
   return (
     <Container className={classes.container}>
       <Box container component={Grid} boxShadow={2} spacing={2}>
@@ -71,4 +59,4 @@ const Paintings = (props) => {
   );
 };
 
-export default Paintings;
+export default PaintingDetails;

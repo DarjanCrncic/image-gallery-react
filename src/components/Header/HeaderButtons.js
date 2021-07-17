@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       transform: "scale(1.02) ",
       color: "#eef",
+      cursor: "pointer",
     },
   },
 }));

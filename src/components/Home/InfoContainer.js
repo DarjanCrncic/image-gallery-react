@@ -1,7 +1,8 @@
 import React from "react";
-import { Container, Grid } from "@material-ui/core";
+import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
+import {introText} from './intro-text';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,18 +47,12 @@ const InfoContainer = (props) => {
         spacing={2}
       >
         <Grid item xs={10}>
-          <h1>Ja sam Jadranka!</h1>
-          <p className={classes.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-            commodo dictum velit, id pharetra mi vestibulum nec. Donec
-            ullamcorper, arcu eget commodo lobortis, eros ante dignissim dolor,
-            bibendum hendrerit tellus lectus nec velit. Aliquam quis justo
-            felis. Orci varius natoque penatibus et magnis dis parturient
-            montes, nascetur ridiculus mus. Etiam malesuada lobortis metus
-            blandit aliquam. Pellentesque turpis mauris, semper eu egestas in,
-            sollicitudin at sapien. Sed ultricies orci quis ipsum facilisis, non
-            vehicula risus facilisis. Pellentesque quis quam justo.
-          </p>
+          <Typography variant="h3" component="h2" color="primary">
+            Ja sam Jadranka!
+          </Typography>
+          <Typography variant="body1" component="p" className={classes.text}>
+            {introText}
+          </Typography>
         </Grid>
         <Grid item xs={2}>
           <img
