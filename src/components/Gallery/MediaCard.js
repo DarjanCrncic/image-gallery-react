@@ -28,6 +28,11 @@ const useStyles = makeStyles({
     margin: "auto",
     marginTop: 30,
   },
+  success: {
+    light: '#81c784',
+    main: '#4caf50',
+    dark: '#388e3c'
+  }
 });
 
 export default function MediaCard(props) {
@@ -60,7 +65,7 @@ export default function MediaCard(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" >
+          <Button size="small" color="primary" href={`/paintings/${props.id}`} >
             Learn More
           </Button>
         </CardActions>

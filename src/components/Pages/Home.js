@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import { Carousel } from "3d-react-carousal";
+import InfoContainer from "../Home/InfoContainer";
 
 const Home = (props) => {
-
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -13,7 +12,11 @@ const Home = (props) => {
 
   const getAllImages = async () => {
     const response = await axios.get("/images");
-    setImages(response.data.map((image,index) => <img src={image.path_to_file} alt={index} />));
+    setImages(
+      response.data.map((image, index) => (
+        <img src={image.path_to_file} alt={index} />
+      ))
+    );
   };
 
   let slides = [
@@ -24,7 +27,12 @@ const Home = (props) => {
     <img src="https://picsum.photos/800/304/?random" alt="5" />,
   ];
 
-  return <Carousel slides={slides} />;
+  return (
+    <React.Fragment>
+      <InfoContainer></InfoContainer>
+      <Carousel slides={slides} arrows={true}/>
+    </React.Fragment>
+  );
 };
 
 export default Home;

@@ -49,6 +49,7 @@ const Gallery = () => {
           return (
             <MediaCard
               key={image.id}
+              id={image.id}
               title={image.title}
               description={image.description}
               shortendDescription={shortendDescription}

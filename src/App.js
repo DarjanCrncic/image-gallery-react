@@ -1,13 +1,32 @@
-
 import Header from "./components/Header/Header";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import Gallery from "./components/Pages/Gallery";
-import About from "./components/Pages/About"
+import About from "./components/Pages/About";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import Paintings from "./components/Pages/Paintings";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      contrastText: '#fff',
+      light: '#81c784',
+      main: '#4caf50',
+      dark: '#388e3c'
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 function App() {
   return (
     <div>
+      <ThemeProvider theme={theme}>
       <Header />
       <Switch>
         <Route exact from="/" render={(props) => <Home {...props} />} />
@@ -17,7 +36,9 @@ function App() {
           render={(props) => <Gallery {...props} />}
         />
         <Route exact path="/about" render={(props) => <About {...props} />} />
+        <Route exact path="/paintings/:id" render={(props) => <Paintings {...props} />} />
       </Switch>
+      </ThemeProvider>
     </div>
   );
 }
