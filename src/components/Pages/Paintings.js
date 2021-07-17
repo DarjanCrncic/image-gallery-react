@@ -1,73 +1,51 @@
-import { Grid, Container, Box, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Magnifier from "react-magnifier";
+import PaintingDetails from "../Gallery/PaintingDetails";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import SwiperCore, {Navigation, Pagination} from "swiper";
+import 'swiper/swiper.scss';
+import "swiper/components/navigation/navigation.min.css"
+import "swiper/components/pagination/pagination.min.css"
+
+SwiperCore.use([Navigation, Pagination]);
 
 const useStyles = makeStyles((theme) => ({
-  container: {
-    marginTop: 20,
-  },
-  image: {
-    maxWidth: "100%",
-  },
-  textGrid: {
-    textAlign: "justify",
-    padding: 12,
-    "& p": {
-      fontSize: "1.1rem",
-    },
-  },
+  
 }));
 
 const Paintings = (props) => {
-  let { id } = useParams();
   const classes = useStyles();
-  const [imageInfo, setImageInfo] = useState("");
+
+  let { id } = useParams();
+
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    getImageInfo();
+    getAllImages();
   }, []);
 
-  const getImageInfo = async () => {
-    const response = await axios.get("/images/find/" + id);
-    const year = response.data.painted_at.slice(0, 4);
-    const newInfo = await { ...response.data, painted_at: year + "." };
-    setImageInfo(newInfo);
+  const getAllImages = async () => {
+    const response = await axios.get("/images");
+    setImages(response.data);
   };
 
+  const body = images.map((imageInfo) => {
+    return (
+      <SwiperSlide key={imageInfo.id}>
+        <PaintingDetails imageInfo={imageInfo}></PaintingDetails>
+      </SwiperSlide>
+    );
+  });
+
   return (
-    <Container className={classes.container}>
-      <Box container component={Grid} boxShadow={2} spacing={2}>
-        <Grid item xs={12} sm={4} className={classes.textGrid}>
-          <Typography variant="h3" component="h2" color="primary">
-            {imageInfo.title}
-          </Typography>
-          <Typography variant="body1" component="p">
-            {imageInfo.description}
-          </Typography>
-          <Typography variant="subtitle1" component="p">
-            Oslikano: {imageInfo.painted_at}
-          </Typography>
-          <Typography variant="subtitle1" component="p">
-            Tehnika: akvarel
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={8}>
-          <Magnifier
-            src={imageInfo.path_to_file}
-            zoomImgSrc={imageInfo.path_to_file}
-            zoom={2.5}
-            mgWidth={200}
-            mgHeight={200}
-            mgShowOverflow={false}
-            className={classes.image}
-            mgBorderWidth={1}
-          />
-        </Grid>
-      </Box>
-    </Container>
+    <>
+    <Swiper navigation={true} pagination={true} autoHeight={false} initialSlide={+id-1}>
+      {body}
+    </Swiper>
+    </>
   );
 };
 

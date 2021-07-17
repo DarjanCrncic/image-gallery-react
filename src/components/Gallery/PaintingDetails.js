@@ -2,7 +2,6 @@ import { Grid, Container, Box, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Magnifier from "react-magnifier";
-import "@brainhubeu/react-carousel/lib/style.css";
 
 const useStyles = makeStyles((theme) => ({
   container: {
