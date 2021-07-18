@@ -5,12 +5,13 @@ import Magnifier from "react-magnifier";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    marginTop: 20,
+    marginTop: 50,
+    marginBottom: 40,
     background: "white",
-    height: "80%",
+    textAlign: "center",
   },
   image: {
-    maxWidth: "100%",
+    maxWidth: "90%",
   },
   textGrid: {
     textAlign: "justify",
@@ -25,7 +26,7 @@ const PaintingDetails = (props) => {
   const classes = useStyles();
   const imageInfo = props.imageInfo;
   return (
-    <Container className={classes.container}>
+    <Container className={classes.container} fixed={true}>
       <Box container component={Grid} boxShadow={2} spacing={2}>
         <Grid item xs={12} sm={4} className={classes.textGrid}>
           <Typography variant="h3" component="h2" color="primary">
