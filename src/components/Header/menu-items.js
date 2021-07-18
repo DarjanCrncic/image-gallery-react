@@ -8,7 +8,7 @@ export const menuItems = [
     pageURL: "/gallery",
   },
   {
-    menuTitle: "About",
-    pageURL: "/about",
+    menuTitle: "Contact",
+    pageURL: "/contact",
   },
 ];

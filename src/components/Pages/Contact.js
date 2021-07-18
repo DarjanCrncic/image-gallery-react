@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 const re =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const About = (props) => {
+const Contact = (props) => {
   const [nameInput, setNameInput] = useState("");
   const [nameValid, setNameValid] = useState(null);
 
@@ -153,4 +153,4 @@ const About = (props) => {
   );
 };
 
-export default About;
+export default Contact;

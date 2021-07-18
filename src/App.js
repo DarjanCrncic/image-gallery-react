@@ -2,7 +2,7 @@ import Header from "./components/Header/Header";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import Gallery from "./components/Pages/Gallery";
-import About from "./components/Pages/About";
+import Contact from "./components/Pages/Contact";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import Paintings from "./components/Pages/Paintings";
 
@@ -35,7 +35,7 @@ function App() {
           path="/gallery"
           render={(props) => <Gallery {...props} />}
         />
-        <Route exact path="/about" render={(props) => <About {...props} />} />
+        <Route exact path="/contact" render={(props) => <Contact {...props} />} />
         <Route exact path="/paintings/:id" render={(props) => <Paintings {...props} />} />
       </Switch>
       </ThemeProvider>
