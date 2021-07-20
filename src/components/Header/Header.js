@@ -5,9 +5,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { withRouter } from "react-router-dom";
-import { menuItems } from "./menu-items";
+import { menuItemsEn, menuItemsHr } from "./menu-items";
 import HeaderButtons from "./HeaderButtons";
 import MobileMenu from "./MobileMenu";
+import { useTranslation } from "react-i18next";
+import LanguagePicker from "./LanguagePicker";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,16 +34,20 @@ const Header = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const { t, i18n } = useTranslation();
+
   const handleButtonClick = (pageURL) => {
     history.push(pageURL);
   };
+
+  const menuItems = (i18n.language === "en") ? menuItemsEn : menuItemsHr;
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Jadrankine Slike
+            {t("page-title")}
           </Typography>
           {isMobile ? (
             <MobileMenu history={history} />
@@ -51,6 +57,7 @@ const Header = (props) => {
               handleButtonClick={handleButtonClick}
             />
           )}
+          <LanguagePicker />
         </Toolbar>
       </AppBar>
     </div>

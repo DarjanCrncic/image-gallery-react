@@ -82,6 +82,7 @@ const Contact = (props) => {
       email: emailInput,
     };
     axios.post("/images/send", data).then((response) => {
+      resetAllInputs();
       setInfoOpen(false);
       setSuccessOpen(true);
     }, (error) => {
@@ -89,6 +90,12 @@ const Contact = (props) => {
       setErrorOpen(true);
     });
   };
+
+  const resetAllInputs = () => {
+    setEmailInput('');
+    setNameInput('');
+    setMessageInput('');
+  }
 
   return (
     <Container className={classes.container}>

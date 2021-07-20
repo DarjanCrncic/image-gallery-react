@@ -8,6 +8,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Fade from "react-reveal/Fade";
+import { useTranslation } from "react-i18next";
+import { useHistory, withRouter } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -37,6 +39,8 @@ const useStyles = makeStyles({
 
 export default function MediaCard(props) {
   const classes = useStyles();
+  const { t, i18n } = useTranslation();
+  const history  = useHistory();
 
   const showImageInfoHandler = () => {
     props.onClickInfo({
@@ -44,6 +48,10 @@ export default function MediaCard(props) {
       description: props.description,
       path: props.path,
     });
+  };
+
+  const handleButtonClick = (event) => {
+    history.push("/paintings/" + event.currentTarget.value);
   };
 
   return (
@@ -65,8 +73,8 @@ export default function MediaCard(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" href={`/paintings/${props.id}`} >
-            Learn More
+          <Button size="small" color="primary" value={props.id} onClick={handleButtonClick} >
+            {t("learn-more")}
           </Button>
         </CardActions>
       </Fade>

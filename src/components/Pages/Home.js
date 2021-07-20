@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Carousel } from "3d-react-carousal";
 import InfoContainer from "../Home/InfoContainer";
-import '../Home/carousel.css';
+import "../Home/carousel.css";
+import { Suspense } from "react";
 
 const Home = (props) => {
   const [images, setImages] = useState([]);
@@ -31,7 +32,7 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <InfoContainer></InfoContainer>
-      <Carousel slides={slides} arrows={true}/>
+      <Carousel slides={slides} arrows={true} />
     </React.Fragment>
   );
 };

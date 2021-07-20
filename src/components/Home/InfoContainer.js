@@ -3,6 +3,7 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { Box } from "@material-ui/core";
 import {introText} from './intro-text';
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -37,6 +38,8 @@ const useStyles = makeStyles((theme) => ({
 
 const InfoContainer = (props) => {
   const classes = useStyles();
+  const { t, i18n } = useTranslation();
+
   return (
     <Container>
       <Box
@@ -48,7 +51,7 @@ const InfoContainer = (props) => {
       >
         <Grid item xs={10}>
           <Typography variant="h3" component="h2" color="primary">
-            Ja sam Jadranka!
+            {t("home-title")}
           </Typography>
           <Typography variant="body1" component="p" className={classes.text}>
             {introText}

@@ -4,7 +4,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import { menuItems } from "./menu-items";
+import { menuItemsEn, menuItemsHr } from "./menu-items";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -25,6 +26,8 @@ const MobileMenu = (props) => {
     props.history.push(pageURL);
     setAnchorEl(null);
   };
+  const { t, i18n } = useTranslation();
+  const menuItems = (i18n.language === "en") ? menuItemsEn : menuItemsHr;
 
   return (
     <>

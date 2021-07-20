@@ -1,4 +1,4 @@
-export const menuItems = [
+export const menuItemsEn = [
   {
     menuTitle: "Home",
     pageURL: "/",
@@ -9,6 +9,21 @@ export const menuItems = [
   },
   {
     menuTitle: "Contact",
+    pageURL: "/contact",
+  },
+];
+
+export const menuItemsHr = [
+  {
+    menuTitle: "Naslovnica",
+    pageURL: "/",
+  },
+  {
+    menuTitle: "Galerija",
+    pageURL: "/gallery",
+  },
+  {
+    menuTitle: "Kontakt",
     pageURL: "/contact",
   },
 ];

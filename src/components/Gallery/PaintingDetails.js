@@ -2,6 +2,7 @@ import { Grid, Container, Box, Typography } from "@material-ui/core";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Magnifier from "react-magnifier";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 const PaintingDetails = (props) => {
   const classes = useStyles();
   const imageInfo = props.imageInfo;
+  const [t, i18n] = useTranslation();
+
   return (
     <Container className={classes.container} fixed={true}>
       <Box container component={Grid} boxShadow={2} spacing={2}>
@@ -36,10 +39,10 @@ const PaintingDetails = (props) => {
             {imageInfo.description}
           </Typography>
           <Typography variant="subtitle1" component="p">
-            Oslikano: {imageInfo.painted_at}
+            {t("painted-at")} {imageInfo.painted_at}
           </Typography>
           <Typography variant="subtitle1" component="p">
-            Tehnika: akvarel
+            {t("tehnique")} akvarel
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
