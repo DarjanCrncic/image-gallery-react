@@ -7,6 +7,8 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import Snackbars from "../Contact/Snackbars";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -28,6 +30,10 @@ const Contact = (props) => {
   const [emailValid, setEmailValid] = useState(null);
 
   const [formIsValid, setFormIsValid] = useState(false);
+
+  const [successOpen, setSuccessOpen] = useState(false);
+  const [errorOpen, setErrorOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   const classes = useStyles();
 
@@ -69,13 +75,20 @@ const Contact = (props) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setInfoOpen(true);
     const data = {
       name: nameInput,
       message: messageInput,
-      email: emailInput
-    }
-    console.log(data);
-  }
+      email: emailInput,
+    };
+    axios.post("/images/send", data).then((response) => {
+      setInfoOpen(false);
+      setSuccessOpen(true);
+    }, (error) => {
+      setInfoOpen(false);
+      setErrorOpen(true);
+    });
+  };
 
   return (
     <Container className={classes.container}>
@@ -149,6 +162,14 @@ const Contact = (props) => {
           Submit
         </Button>
       </form>
+      <Snackbars
+        errorOpen={errorOpen}
+        successOpen={successOpen}
+        setErrorOpen={setErrorOpen}
+        setSuccessOpen={setSuccessOpen}
+        setInfoOpen={setInfoOpen}
+        infoOpen={infoOpen}
+      />
     </Container>
   );
 };

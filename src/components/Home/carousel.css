@@ -1,0 +1,8 @@
+.fa-arrow-right, .fa-arrow-left{
+    color: #388e3c
+
+}
+
+.slider-right div, .slider-left div {
+    border-color: #81c784 !important;
+}

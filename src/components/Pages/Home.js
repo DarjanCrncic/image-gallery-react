@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Carousel } from "3d-react-carousal";
 import InfoContainer from "../Home/InfoContainer";
+import '../Home/carousel.css';
 
 const Home = (props) => {
   const [images, setImages] = useState([]);
