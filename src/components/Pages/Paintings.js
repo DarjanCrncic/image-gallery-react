@@ -14,7 +14,7 @@ SwiperCore.use([Navigation, Pagination]);
 
 const Paintings = (props) => {
 
-  let { id } = useParams();
+  let { index } = useParams();
 
   const [images, setImages] = useState([]);
 
@@ -24,12 +24,12 @@ const Paintings = (props) => {
 
   const getAllImages = async () => {
     const response = await axios.get("/images");
-    setImages(response.data);
+    await setImages(response.data);
   };
 
   const body = images.map((imageInfo) => {
     return (
-      <SwiperSlide key={imageInfo.id}>
+      <SwiperSlide key={imageInfo._id}>
         <PaintingDetails imageInfo={imageInfo}></PaintingDetails>
       </SwiperSlide>
     );
@@ -41,7 +41,8 @@ const Paintings = (props) => {
         navigation={true}
         pagination={true}
         autoHeight={false}
-        initialSlide={+id - 1}
+        initialSlide={+index}
+        lazy={true}
       >
         {body}
       </Swiper>

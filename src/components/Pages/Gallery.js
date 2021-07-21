@@ -40,7 +40,7 @@ const Gallery = () => {
   return (
     <React.Fragment>
       <Container maxWidth="lg" className={classes.container}>
-        {images.map((image) => {
+        {images.map((image, index) => {
           let shortendDescription = image.description;
           if (shortendDescription.length > 50) {
             let chunks = shortendDescription.match(/.{1,80}(\s|$)/g);
@@ -48,8 +48,8 @@ const Gallery = () => {
           }
           return (
             <MediaCard
-              key={image.id}
-              id={image.id}
+              key={image._id}
+              index={index}
               title={image.title}
               description={image.description}
               shortendDescription={shortendDescription}

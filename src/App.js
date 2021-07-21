@@ -42,7 +42,7 @@ function App() {
           />
           <Route
             exact
-            path="/paintings/:id"
+            path="/paintings/:index"
             render={(props) => <Paintings {...props} />}
           />
         </Switch>

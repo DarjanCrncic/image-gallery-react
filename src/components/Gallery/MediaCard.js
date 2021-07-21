@@ -73,7 +73,7 @@ export default function MediaCard(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary" value={props.id} onClick={handleButtonClick} >
+          <Button size="small" color="primary" value={props.index} onClick={handleButtonClick} >
             {t("learn-more")}
           </Button>
         </CardActions>
