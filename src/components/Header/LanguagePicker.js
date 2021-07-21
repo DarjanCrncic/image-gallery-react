@@ -12,19 +12,23 @@ const LanguagePicker = () => {
 
   const handleOnClickEng = () => {
     i18n.changeLanguage("en");
+    setEng(true);
+    setCro(false);
   };
 
   const handleOnClickCro = () => {
     i18n.changeLanguage("hr");
+    setCro(true);
+    setEng(false);
   };
 
   return (
     <div className={classes.picker}>
       <button onClick={handleOnClickCro}>
-        {<img src={croFlag} alt="cro" />}
+        {<img src={croFlag} alt="cro" className={cro ? classes["active-lang"] : classes["inactive-lang"]}/>}
       </button>
       <button onClick={handleOnClickEng}>
-        {<img src={ukFlag} alt="uk" />}
+        {<img src={ukFlag} alt="uk" className={eng ? classes["active-lang"] : classes["inactive-lang"]}/>}
       </button>
     </div>
   );

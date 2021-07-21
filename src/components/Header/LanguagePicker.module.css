@@ -13,3 +13,11 @@
     height: 25px;
 }
 
+.active-lang {
+	opacity: 1;
+}
+
+.inactive-lang {
+	opacity: 0.4;
+}
+
