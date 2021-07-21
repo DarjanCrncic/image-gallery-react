@@ -1,12 +1,15 @@
 import { Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 const Snackbars = (props) => {
+  const { t, i18n } = useTranslation();
+
   const handleCloseSuccess = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -36,7 +39,7 @@ const Snackbars = (props) => {
         onClose={handleCloseSuccess}
       >
         <Alert onClose={handleCloseSuccess} severity="success">
-          Message sent successfuly!
+          {t("success-message")}
         </Alert>
       </Snackbar>
       <Snackbar
@@ -45,7 +48,7 @@ const Snackbars = (props) => {
         onClose={handleCloseError}
       >
         <Alert onClose={handleCloseError} severity="error">
-          Something went wrong, please try again later.
+          {t("error-message")}
         </Alert>
       </Snackbar>
       <Snackbar
@@ -54,7 +57,7 @@ const Snackbars = (props) => {
         onClose={handleCloseInfo}
       >
         <Alert onClose={handleCloseInfo} severity="info">
-          Your message is being sent!
+          {t("info-message")}
         </Alert>
       </Snackbar>
     </React.Fragment>

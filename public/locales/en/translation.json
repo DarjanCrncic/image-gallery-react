@@ -4,5 +4,20 @@
 
     "learn-more": "LEARN MORE",
     "tehnique": "Tehnique:",
-    "painted-at": "Painted:"
+    "painted-at": "Painted:",
+
+    "name": "Name",
+    "name-restriction": "Name has to have atleast 5 chracters.",
+
+    "message": "Message",
+    "message-restriction": "Message has to have atleast 15 chracters.",
+
+    "email": "Your email",
+    "email-restriction": "Please enter a vaild email.",
+    "email-helper-text": "We'll never share your email.",
+
+    "submit": "Submit",
+    "success-message": "Message sent successfuly!",
+    "error-message": "Something went wrong, please try again later.",
+    "info-message": "Your message is being sent!"
 }

@@ -9,10 +9,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Snackbars from "../Contact/Snackbars";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     width: "50%",
+  },
+  button: {
+    marginTop: 15,
   },
 }));
 
@@ -36,10 +40,11 @@ const Contact = (props) => {
   const [infoOpen, setInfoOpen] = useState(false);
 
   const classes = useStyles();
+  const { t, i18n } = useTranslation();
 
   const handleNameChange = (event) => {
     setNameInput(event.target.value);
-    if (event.target.value.length < 5) {
+    if (event.target.value.trim().length < 5) {
       setNameValid(false);
       return;
     }
@@ -48,7 +53,7 @@ const Contact = (props) => {
 
   const handleMessageChange = (event) => {
     setMessageInput(event.target.value);
-    if (event.target.value.length < 15) {
+    if (event.target.value.trim().length < 15) {
       setMessageValid(false);
       return;
     }
@@ -77,25 +82,28 @@ const Contact = (props) => {
     e.preventDefault();
     setInfoOpen(true);
     const data = {
-      name: nameInput,
-      message: messageInput,
-      email: emailInput,
+      name: nameInput.trim(),
+      message: messageInput.trim(),
+      email: emailInput.trim(),
     };
-    axios.post("/images/send", data).then((response) => {
-      resetAllInputs();
-      setInfoOpen(false);
-      setSuccessOpen(true);
-    }, (error) => {
-      setInfoOpen(false);
-      setErrorOpen(true);
-    });
+    axios.post("/images/send", data).then(
+      (response) => {
+        resetAllInputs();
+        setInfoOpen(false);
+        setSuccessOpen(true);
+      },
+      (error) => {
+        setInfoOpen(false);
+        setErrorOpen(true);
+      }
+    );
   };
 
   const resetAllInputs = () => {
-    setEmailInput('');
-    setNameInput('');
-    setMessageInput('');
-  }
+    setEmailInput("");
+    setNameInput("");
+    setMessageInput("");
+  };
 
   return (
     <Container className={classes.container}>
@@ -105,15 +113,13 @@ const Contact = (props) => {
             <TextField
               required
               id="name"
-              label="Name"
+              label={t("name")}
               value={nameInput}
               onChange={handleNameChange}
               onBlur={handleNameChange}
               error={!nameValid && nameValid != null ? true : false}
               helperText={
-                !nameValid && nameValid != null
-                  ? "Name has to have atleast 5 chracters."
-                  : ""
+                !nameValid && nameValid != null ? t("name-restriction") : ""
               }
             />
           </FormControl>
@@ -123,7 +129,7 @@ const Contact = (props) => {
             <TextField
               required
               id="message"
-              label="Message"
+              label={t("message")}
               multiline
               rows={4}
               variant="outlined"
@@ -133,29 +139,29 @@ const Contact = (props) => {
               error={!messageValid && messageValid != null ? true : false}
               helperText={
                 !messageValid && messageValid != null
-                  ? "Message has to have atleast 15 chracters."
+                  ? t("message-restriction")
                   : ""
               }
             />
           </FormControl>
         </div>
         <div>
-          <FormControl fullWidth={true} margin="normal">
+          <FormControl fullWidth={true}>
             <TextField
               required
               id="email"
-              label="Your email"
+              label={t("email")}
               type="email"
               value={emailInput}
               onChange={handleEmailChange}
               onBlur={handleEmailChange}
               error={!emailValid && emailValid != null ? true : false}
               helperText={
-                !emailValid && emailValid != null ? "Invalid email." : ""
+                !emailValid && emailValid != null ? t("email-restriction") : ""
               }
             />
             <FormHelperText id="my-helper-text">
-              We'll never share your email.
+              {t("email-helper-text")}
             </FormHelperText>
           </FormControl>
         </div>
@@ -165,8 +171,9 @@ const Contact = (props) => {
           type="submit"
           disabled={!formIsValid ? true : false}
           color="primary"
+          className={classes.button}
         >
-          Submit
+          {t("submit")}
         </Button>
       </form>
       <Snackbars
