@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 const PaintingDetails = (props) => {
   const classes = useStyles();
   const imageInfo = props.imageInfo;
-  const [t, i18n] = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container className={classes.container} fixed={true}>

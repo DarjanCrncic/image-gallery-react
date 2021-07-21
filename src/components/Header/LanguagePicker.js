@@ -8,7 +8,7 @@ const LanguagePicker = () => {
   const [cro, setCro] = useState(true);
   const [eng, setEng] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const handleOnClickEng = () => {
     i18n.changeLanguage("en");

@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
 import PaintingDetails from "../Gallery/PaintingDetails";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import SwiperCore, {Navigation, Pagination} from "swiper";
-import 'swiper/swiper.scss';
-import "swiper/components/navigation/navigation.min.css"
-import "swiper/components/pagination/pagination.min.css"
+import SwiperCore, { Navigation, Pagination } from "swiper";
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/pagination.min.css";
 import "../Gallery/swiper.css";
 
 SwiperCore.use([Navigation, Pagination]);
 
-const useStyles = makeStyles((theme) => ({
-  
-}));
-
 const Paintings = (props) => {
-  const classes = useStyles();
 
   let { id } = useParams();
 
@@ -43,9 +37,14 @@ const Paintings = (props) => {
 
   return (
     <>
-    <Swiper navigation={true} pagination={true} autoHeight={false} initialSlide={+id-1}>
-      {body}
-    </Swiper>
+      <Swiper
+        navigation={true}
+        pagination={true}
+        autoHeight={false}
+        initialSlide={+id - 1}
+      >
+        {body}
+      </Swiper>
     </>
   );
 };

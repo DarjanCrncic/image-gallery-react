@@ -8,7 +8,7 @@ function Alert(props) {
 }
 
 const Snackbars = (props) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleCloseSuccess = (event, reason) => {
     if (reason === "clickaway") {

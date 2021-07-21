@@ -26,7 +26,7 @@ const MobileMenu = (props) => {
     props.history.push(pageURL);
     setAnchorEl(null);
   };
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const menuItems = (i18n.language === "en") ? menuItemsEn : menuItemsHr;
 
   return (

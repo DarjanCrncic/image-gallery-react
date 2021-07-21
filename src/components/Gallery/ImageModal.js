@@ -29,6 +29,7 @@ export default function ImageModal(props) {
             src={props.path}
             className={classes.paper}
             onLoad={props.handleOpen}
+            alt="preview"
           />
         </Fade>
         </div>

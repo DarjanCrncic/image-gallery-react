@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const InfoContainer = (props) => {
   const classes = useStyles();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Container>

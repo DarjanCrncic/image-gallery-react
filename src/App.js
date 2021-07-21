@@ -5,7 +5,6 @@ import Gallery from "./components/Pages/Gallery";
 import Contact from "./components/Pages/Contact";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Paintings from "./components/Pages/Paintings";
-import { Suspense } from "react";
 
 const theme = createTheme({
   palette: {

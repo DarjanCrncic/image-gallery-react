@@ -40,7 +40,7 @@ const Contact = (props) => {
   const [infoOpen, setInfoOpen] = useState(false);
 
   const classes = useStyles();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleNameChange = (event) => {
     setNameInput(event.target.value);
