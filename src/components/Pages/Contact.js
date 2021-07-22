@@ -86,7 +86,7 @@ const Contact = (props) => {
       message: messageInput.trim(),
       email: emailInput.trim(),
     };
-    axios.post("/images/send", data).then(
+    axios.post("/send", data).then(
       (response) => {
         resetAllInputs();
         setInfoOpen(false);
