@@ -24,13 +24,27 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    getAllImages();
-  }, []);
+    let source = axios.CancelToken.source();
 
-  const getAllImages = async () => {
-    const response = await axios.get("/images");
-    setImages(response.data);
-  };
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/images/", {
+          cancelToken: source.token,
+        });
+        setImages(response.data);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log(error);
+        } else {
+          throw error;
+        }
+      }
+    };
+    fetchData();
+    return () => {
+      source.cancel();
+    };
+  }, []);
 
   const handleOpen = (image) => {
     setOpen(true);

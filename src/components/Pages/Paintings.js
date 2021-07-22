@@ -13,19 +13,32 @@ import "../Gallery/swiper.css";
 SwiperCore.use([Navigation, Pagination]);
 
 const Paintings = (props) => {
-
   let { index } = useParams();
 
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    getAllImages();
-  }, []);
+    let source = axios.CancelToken.source();
 
-  const getAllImages = async () => {
-    const response = await axios.get("/images");
-    await setImages(response.data);
-  };
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/images/", {
+          cancelToken: source.token,
+        });
+        setImages(response.data);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log(error);
+        } else {
+          throw error;
+        }
+      }
+    };
+    fetchData();
+    return () => {
+      source.cancel();
+    };
+  }, []);
 
   const body = images.map((imageInfo) => {
     return (

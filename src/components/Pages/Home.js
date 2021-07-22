@@ -8,17 +8,27 @@ const Home = (props) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    getAllImages();
-  }, []);
+    let source = axios.CancelToken.source();
 
-  const getAllImages = async () => {
-    const response = await axios.get("/images");
-    setImages(
-      response.data.map((image, index) => (
-        <img src={image.path_to_file} alt={index} />
-      ))
-    );
-  };
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/images/", {
+          cancelToken: source.token,
+        });
+        setImages(response.data);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log(error);
+        } else {
+          throw error;
+        }
+      }
+    };
+    fetchData();
+    return () => {
+      source.cancel();
+    };
+  }, []);
 
   let slides = [
     <img src="https://picsum.photos/800/300/?random" alt="1" />,
