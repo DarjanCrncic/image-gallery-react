@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     fontSize: "1.6rem",
+    "&:hover": {
+      cursor: "pointer"
+    }
   },
 }));
 
@@ -46,7 +49,7 @@ const Header = (props) => {
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography variant="h6" className={classes.title} onClick={() => history.push("/")}>
             {t("page-title")}
           </Typography>
           {isMobile ? (

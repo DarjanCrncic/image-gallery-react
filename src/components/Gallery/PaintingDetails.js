@@ -42,7 +42,7 @@ const PaintingDetails = (props) => {
             {t("painted-at")} {imageInfo.painted_at}
           </Typography>
           <Typography variant="subtitle1" component="p">
-            {t("tehnique")} akvarel
+            {t("technique")} akvarel
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
@@ -55,7 +55,7 @@ const PaintingDetails = (props) => {
             mgShowOverflow={false}
             className={classes.image}
             mgBorderWidth={1}
-          />
+          />  
         </Grid>
       </Box>
     </Container>

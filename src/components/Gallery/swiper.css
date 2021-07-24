@@ -1,7 +1,9 @@
 .swiper-button-next { 
     color: #4caf50; 
+    margin-right: 20px;
 }
 
 .swiper-button-prev { 
     color: #4caf50; 
+    margin-left: 20px;
 }
