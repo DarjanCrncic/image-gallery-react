@@ -9,6 +9,7 @@ import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "../Gallery/swiper.css";
+import Fade from "react-reveal/Fade";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -50,15 +51,16 @@ const Paintings = (props) => {
 
   return (
     <>
-      <Swiper
-        navigation={true}
-        pagination={true}
-        autoHeight={false}
-        initialSlide={+index}
-        lazy={true}
-      >
-        {body}
-      </Swiper>
+      <Fade duration={1500}>
+        <Swiper
+          navigation={true}
+          pagination={true}
+          autoHeight={true}
+          initialSlide={+index}
+        >
+          {body}
+        </Swiper>
+      </Fade>
     </>
   );
 };

@@ -4,6 +4,7 @@ import {
   TextField,
   FormHelperText,
   Button,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useEffect, useState } from "react";
@@ -13,10 +14,19 @@ import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    width: "50%",
+    width: "80%",
+    marginTop: "5rem",
+    textAlign: "center",
   },
   button: {
     marginTop: 15,
+  },
+  form: {
+    width: "50%",
+    margin: "auto",
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+    },
   },
 }));
 
@@ -107,7 +117,10 @@ const Contact = (props) => {
 
   return (
     <Container className={classes.container}>
-      <form onSubmit={handleFormSubmit}>
+      <Typography variant="h3" component="h2" color="primary">
+        {t("contact-title")}
+      </Typography>
+      <form onSubmit={handleFormSubmit} className={classes.form}>
         <div>
           <FormControl fullWidth={true} margin="normal">
             <TextField

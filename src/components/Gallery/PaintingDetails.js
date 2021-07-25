@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   image: {
-    maxWidth: "90%",
+    //maxWidth: "90%",
   },
   textGrid: {
     textAlign: "justify",
@@ -49,7 +49,7 @@ const PaintingDetails = (props) => {
           <Magnifier
             src={imageInfo.path_to_file}
             zoomImgSrc={imageInfo.path_to_file}
-            zoom={2.5}
+            zoom={1.5}
             mgWidth={200}
             mgHeight={200}
             mgShowOverflow={false}

@@ -19,5 +19,7 @@
     "submit": "Submit",
     "success-message": "Message sent successfully!",
     "error-message": "Something went wrong, please try again later.",
-    "info-message": "Your message is being sent!"
+    "info-message": "Your message is being sent!",
+
+    "contact-title": "If you have questions, let me know!"
 }

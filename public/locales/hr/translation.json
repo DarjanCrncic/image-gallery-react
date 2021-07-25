@@ -19,5 +19,7 @@
     "submit": "Pošalji",
     "success-message": "Poruka uspješno poslana!",
     "error-message": "Nešto je pošlo po krivu, molimo pokušajte kasnije.",
-    "info-message": "Vaša se poruka šalje!"
+    "info-message": "Vaša se poruka šalje!",
+
+    "contact-title": "Ako imaš pitanja, javi se!"
 }
