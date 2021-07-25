@@ -55,7 +55,7 @@ const Paintings = (props) => {
         <Swiper
           navigation={true}
           pagination={true}
-          autoHeight={true}
+          autoHeight={false}
           initialSlide={+index}
         >
           {body}
