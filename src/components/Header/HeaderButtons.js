@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   headerOptions: {
@@ -12,17 +13,18 @@ const useStyles = makeStyles((theme) => ({
   headerButton: {
     marginLeft: 20,
     marginRight: 20,
-    background: "transparent",
     color: "inherit",
-    padding: 0,
-    border: "none",
-    outline: "none",
-    fontSize: "1.4rem",
     "&:hover": {
       transform: "scale(1.02) ",
       color: "#eef",
       cursor: "pointer",
     },
+    textDecoration: "none",
+  },
+  active: {
+    transform: "scale(1.02) ",
+    color: "#eef",
+    textDecoration: "underline",
   },
 }));
 
@@ -34,13 +36,14 @@ const HeaderButtons = (props) => {
       {props.menuItems.map((menuItem) => {
         const { menuTitle, pageURL } = menuItem;
         return (
-          <button
+          <NavLink
             key={menuTitle}
-            onClick={() => props.handleButtonClick(pageURL)}
+            to={pageURL}
+            activeClassName={classes.active}
             className={classes.headerButton}
           >
             <Typography variant="h6">{menuTitle}</Typography>
-          </button>
+          </NavLink>
         );
       })}
     </div>

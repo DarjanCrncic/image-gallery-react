@@ -1,7 +1,7 @@
 export const menuItemsEn = [
   {
     menuTitle: "Home",
-    pageURL: "/",
+    pageURL: "/home",
   },
   {
     menuTitle: "Gallery",
@@ -16,7 +16,7 @@ export const menuItemsEn = [
 export const menuItemsHr = [
   {
     menuTitle: "Naslovnica",
-    pageURL: "/",
+    pageURL: "/home",
   },
   {
     menuTitle: "Galerija",

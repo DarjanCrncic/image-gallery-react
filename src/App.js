@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./components/Pages/Home";
 import Gallery from "./components/Pages/Gallery";
 import Contact from "./components/Pages/Contact";
@@ -22,9 +22,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: [
-      'Sanchez',
-    ].join(','),
+    fontFamily: ["Sanchez"].join(","),
   },
 });
 
@@ -34,7 +32,14 @@ function App() {
       <ThemeProvider theme={theme}>
         <Header />
         <Switch>
-          <Route exact from="/" render={(props) => <Home {...props} />} />
+          <Route exact from="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route
+            exact
+            path="/home"
+            render={(props) => <Home {...props} />}
+          ></Route>
           <Route
             exact
             path="/gallery"
