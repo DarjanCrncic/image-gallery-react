@@ -21,6 +21,11 @@ const theme = createTheme({
       contrastText: "#000",
     },
   },
+  typography: {
+    fontFamily: [
+      'Sanchez',
+    ].join(','),
+  },
 });
 
 function App() {

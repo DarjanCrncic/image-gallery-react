@@ -11,14 +11,11 @@ const useStyles = makeStyles((theme) => ({
     background: "white",
     textAlign: "center",
   },
-  image: {
-    //maxWidth: "90%",
-  },
   textGrid: {
     textAlign: "justify",
     padding: 12,
-    "& p": {
-      fontSize: "1.1rem",
+    "& h2": {
+      marginTop: 10,
     },
   },
 }));
@@ -37,14 +34,14 @@ const PaintingDetails = (props) => {
           <Typography variant="h3" component="h2" color="primary">
             {imageInfo.title}
           </Typography>
-          <Typography variant="body1" component="p">
+          <Typography variant="body1" component="h2">
             {imageInfo.description}
           </Typography>
-          <Typography variant="subtitle1" component="p">
-            {t("painted-at")} {date.getFullYear()}
+          <Typography variant="subtitle1" component="h2">
+            <strong>{t("painted-at")}</strong> {date.getFullYear()}
           </Typography>
-          <Typography variant="subtitle1" component="p">
-            {t("technique")} akvarel
+          <Typography variant="subtitle1" component="h2">
+            <strong>{t("technique")}</strong> akvarel
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
@@ -57,7 +54,7 @@ const PaintingDetails = (props) => {
             mgShowOverflow={false}
             className={classes.image}
             mgBorderWidth={1}
-          />  
+          />
         </Grid>
       </Box>
     </Container>

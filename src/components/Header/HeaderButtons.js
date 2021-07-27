@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   headerOptions: {
@@ -38,7 +39,7 @@ const HeaderButtons = (props) => {
             onClick={() => props.handleButtonClick(pageURL)}
             className={classes.headerButton}
           >
-            {menuTitle}
+            <Typography variant="h6">{menuTitle}</Typography>
           </button>
         );
       })}
