@@ -1,8 +1,19 @@
-.fa-arrow-right, .fa-arrow-left{
-    color: #388e3c
-
+.fa-arrow-right,
+.fa-arrow-left {
+  color: #388e3c;
 }
 
-.slider-right div, .slider-left div {
-    border-color: #81c784 !important;
+.slider-right div,
+.slider-left div {
+  border-color: #81c784 !important;
+}
+
+.slider-single-content {
+  box-shadow: 0px 0px 0px 0px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .slider-content {
+    width: 100% !important;
+  }
 }

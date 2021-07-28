@@ -3,8 +3,10 @@ import axios from "axios";
 import { Carousel } from "3d-react-carousal";
 import InfoContainer from "../Home/InfoContainer";
 import "../Home/carousel.css";
+import { useMediaQuery } from "@material-ui/core";
 
 const Home = (props) => {
+  const media = useMediaQuery('(max-width:600px)');
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Home = (props) => {
   return (
     <React.Fragment>
       <InfoContainer></InfoContainer>
-      <Carousel slides={slides} arrows={true} />
+      <Carousel slides={slides} arrows={media ? false : true} />
     </React.Fragment>
   );
 };
