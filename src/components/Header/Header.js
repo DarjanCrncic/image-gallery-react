@@ -21,13 +21,15 @@ const useStyles = makeStyles((theme) => ({
     background: "linear-gradient(90deg, #159015, #26ac29, #3cc453)",
   },
   title: {
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       flexGrow: 1,
     },
-    fontSize: "1.6rem",
+    fontSize: "2rem",
     "&:hover": {
-      cursor: "pointer"
-    }
+      cursor: "pointer",
+    },
+    fontFamily: "Dancing Script",
+    marginLeft: 10,
   },
 }));
 
@@ -35,7 +37,7 @@ const Header = (props) => {
   const { history } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { t, i18n } = useTranslation();
 
@@ -43,13 +45,17 @@ const Header = (props) => {
     history.push(pageURL);
   };
 
-  const menuItems = (i18n.language === "en") ? menuItemsEn : menuItemsHr;
+  const menuItems = i18n.language === "en" ? menuItemsEn : menuItemsHr;
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.header}>
         <Toolbar>
-          <Typography variant="h6" className={classes.title} onClick={() => history.push("/")}>
+          <Typography
+            variant="h6"
+            className={classes.title}
+            onClick={() => history.push("/")}
+          >
             {t("page-title")}
           </Typography>
           {isMobile ? (

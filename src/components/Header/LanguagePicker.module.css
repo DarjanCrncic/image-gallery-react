@@ -1,23 +1,20 @@
-.picker button {
-    background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-    margin-left: 8px;
-}
-
-.picker > button > img {
-    height: 25px;
+.picker {
+  color: inherit;
+  font: inherit;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background: none;
+  border: none;
 }
 
 .active-lang {
-	opacity: 1;
+  opacity: 1;
+  height: 25px;
 }
 
 .inactive-lang {
-	opacity: 0.4;
+  opacity: 0.4;
+  height: 25px;
 }
-

@@ -16,12 +16,15 @@ const useStyles = makeStyles((theme) => ({
     boxShadow:
       "rgb(0 0 0 / 20%) 0px 3px 1px -2px, rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px",
     fontSize: "1.2rem",
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       textAlign: "center",
     },
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       textAlign: "justify",
     },
+  },
+  text: {
+    textAlign: "justify",
   },
 }));
 

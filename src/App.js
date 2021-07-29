@@ -22,7 +22,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Sanchez"].join(","),
+    fontFamily: ["Open Sans"].join(","),
   },
 });
 

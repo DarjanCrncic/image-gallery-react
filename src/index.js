@@ -4,10 +4,12 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./i18n.js";
+import { CircularProgress } from "@material-ui/core";
+import classes from "./index.module.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<CircularProgress className={classes.spinner}/>}>
       <Router>
         <App />
       </Router>
