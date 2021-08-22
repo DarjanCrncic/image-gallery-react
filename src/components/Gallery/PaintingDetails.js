@@ -25,8 +25,6 @@ const PaintingDetails = (props) => {
   const imageInfo = props.imageInfo;
   const { t } = useTranslation();
 
-  const date = new Date(imageInfo.painted_at);
-
   return (
     <Container className={classes.container} fixed={true}>
       <Box container component={Grid} boxShadow={2} spacing={2}>
@@ -38,10 +36,10 @@ const PaintingDetails = (props) => {
             {imageInfo.description}
           </Typography>
           <Typography variant="subtitle1" component="h2">
-            <strong>{t("painted-at")}</strong> {date.getFullYear()}
+            <strong>{t("painted-at")} </strong> {imageInfo.painted_at.substring(0,4)}
           </Typography>
           <Typography variant="subtitle1" component="h2">
-            <strong>{t("technique")}</strong> akvarel
+            <strong>{t("technique")} </strong> {imageInfo.technique}
           </Typography>
         </Grid>
         <Grid item xs={12} sm={8}>
