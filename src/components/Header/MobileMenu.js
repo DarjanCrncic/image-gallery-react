@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
-    marginRight: theme.spacing(2),
+    //marginRight: theme.spacing(2),
   },
 }));
 

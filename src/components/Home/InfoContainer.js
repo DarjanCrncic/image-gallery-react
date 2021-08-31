@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
+    marginTop: 10,
     textAlign: "justify",
   },
 }));

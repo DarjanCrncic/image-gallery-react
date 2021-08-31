@@ -7,8 +7,7 @@ import classes from "./LanguagePicker.module.css";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 const LanguagePicker = () => {
-  const [cro, setCro] = useState(true);
-  const [eng, setEng] = useState(false);
+  const [lang, setLang] = useState({ eng: false, cro: true });
   const [anchorEl, setAnchorEl] = useState(null);
 
   const { t, i18n } = useTranslation();
@@ -22,20 +21,22 @@ const LanguagePicker = () => {
   };
 
   const handleOnClickEng = () => {
-    i18n.changeLanguage("en");
-    setEng(true);
-    setCro(false);
+    if (lang.eng === false && lang.cro === true) {
+      i18n.changeLanguage("en");
+      setLang({ eng: true, cro: false });
+    }
   };
 
   const handleOnClickCro = () => {
-    i18n.changeLanguage("hr");
-    setCro(true);
-    setEng(false);
+    if (lang.eng === true && lang.cro === false) {
+      i18n.changeLanguage("hr");
+      setLang({ eng: false, cro: true });
+    }
   };
 
   return (
     <>
-      <button 
+      <button
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
@@ -57,14 +58,14 @@ const LanguagePicker = () => {
           <img
             src={croFlag}
             alt="cro"
-            className={cro ? classes["active-lang"] : classes["inactive-lang"]}
+            className={lang.cro ? classes["active-lang"] : classes["inactive-lang"]}
           />
         </MenuItem>
         <MenuItem onClick={handleOnClickEng}>
           <img
             src={ukFlag}
             alt="uk"
-            className={eng ? classes["active-lang"] : classes["inactive-lang"]}
+            className={lang.eng ? classes["active-lang"] : classes["inactive-lang"]}
           />
         </MenuItem>
       </Menu>

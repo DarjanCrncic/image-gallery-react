@@ -28,7 +28,7 @@ const PaintingDetails = (props) => {
   return (
     <Container className={classes.container} fixed={true}>
       <Box container component={Grid} boxShadow={2} spacing={2}>
-        <Grid item xs={12} sm={4} className={classes.textGrid}>
+        <Grid item xs={12} md={4} className={classes.textGrid}>
           <Typography variant="h3" component="h2" color="primary">
             {imageInfo.title}
           </Typography>
@@ -42,7 +42,7 @@ const PaintingDetails = (props) => {
             <strong>{t("technique")} </strong> {imageInfo.technique}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} md={8}>
           <Magnifier
             src={imageInfo.path_to_file}
             zoomImgSrc={imageInfo.path_to_file}

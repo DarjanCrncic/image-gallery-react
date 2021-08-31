@@ -28,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       cursor: "pointer",
     },
-    fontFamily: "Dancing Script",
+    //fontFamily: "Dancing Script",
+    fontFamily: "Raleway",
+    fontWeight: 300,
     marginLeft: 10,
   },
 }));

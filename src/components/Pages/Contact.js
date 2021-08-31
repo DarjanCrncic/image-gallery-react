@@ -54,7 +54,7 @@ const Contact = (props) => {
 
   const handleNameChange = (event) => {
     setNameInput(event.target.value);
-    if (event.target.value.trim().length < 5) {
+    if (event.target.value.trim().length < 3) {
       setNameValid(false);
       return;
     }
@@ -63,7 +63,7 @@ const Contact = (props) => {
 
   const handleMessageChange = (event) => {
     setMessageInput(event.target.value);
-    if (event.target.value.trim().length < 15) {
+    if (event.target.value.trim().length < 10) {
       setMessageValid(false);
       return;
     }

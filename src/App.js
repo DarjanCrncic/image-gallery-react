@@ -22,7 +22,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Open Sans"].join(","),
+    fontFamily: ["Raleway"].join(","),
   },
 });
 
