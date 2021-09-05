@@ -58,14 +58,18 @@ const LanguagePicker = () => {
           <img
             src={croFlag}
             alt="cro"
-            className={lang.cro ? classes["active-lang"] : classes["inactive-lang"]}
+            className={
+              lang.cro ? classes["active-lang"] : classes["inactive-lang"]
+            }
           />
         </MenuItem>
         <MenuItem onClick={handleOnClickEng}>
           <img
             src={ukFlag}
             alt="uk"
-            className={lang.eng ? classes["active-lang"] : classes["inactive-lang"]}
+            className={
+              lang.eng ? classes["active-lang"] : classes["inactive-lang"]
+            }
           />
         </MenuItem>
       </Menu>

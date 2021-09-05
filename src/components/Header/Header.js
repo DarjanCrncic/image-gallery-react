@@ -23,13 +23,12 @@ const useStyles = makeStyles((theme) => ({
   title: {
     [theme.breakpoints.down("sm")]: {
       flexGrow: 1,
+      fontSize: "1.5rem"
     },
     fontSize: "2rem",
     "&:hover": {
       cursor: "pointer",
     },
-    //fontFamily: "Dancing Script",
-    fontFamily: "Raleway",
     fontWeight: 300,
     marginLeft: 10,
   },

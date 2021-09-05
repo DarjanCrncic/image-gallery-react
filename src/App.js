@@ -5,6 +5,8 @@ import Gallery from "./components/Pages/Gallery";
 import Contact from "./components/Pages/Contact";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Paintings from "./components/Pages/Paintings";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const theme = createTheme({
   palette: {
@@ -22,11 +24,16 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ["Raleway"].join(","),
+    fontFamily: ["Kaisei HarunoUmi"],
   },
 });
 
 function App() {
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    i18n.changeLanguage("hr");
+  }, []);
+
   return (
     <div>
       <ThemeProvider theme={theme}>
