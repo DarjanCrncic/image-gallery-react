@@ -6,10 +6,16 @@ import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    marginTop: 50,
+    marginTop: 30,
     marginBottom: 40,
     background: "white",
     textAlign: "center",
+    [theme.breakpoints.up("lg")]: {
+      marginTop: 50,
+    },
+    [theme.breakpoints.up("xl")]: {
+      marginTop: 100,
+    },
   },
   textGrid: {
     textAlign: "justify",
@@ -26,7 +32,7 @@ const PaintingDetails = (props) => {
   const { t } = useTranslation();
 
   return (
-    <Container className={classes.container} fixed={true}>
+    <Container className={classes.container} >
       <Box container component={Grid} boxShadow={2} spacing={2}>
         <Grid item xs={12} md={4} className={classes.textGrid}>
           <Typography variant="h3" component="h2" color="primary">

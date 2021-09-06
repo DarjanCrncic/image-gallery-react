@@ -10,10 +10,12 @@ import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "../Gallery/swiper.css";
 import Fade from "react-reveal/Fade";
+import { useMediaQuery } from "@material-ui/core";
 
 SwiperCore.use([Navigation, Pagination]);
 
 const Paintings = (props) => {
+  const media = useMediaQuery("(max-width:1280px)");
   let { index } = useParams();
 
   const [images, setImages] = useState([]);
@@ -53,7 +55,7 @@ const Paintings = (props) => {
     <>
       <Fade duration={1500}>
         <Swiper
-          navigation={true}
+          navigation={media ? false : true}
           pagination={true}
           autoHeight={false}
           initialSlide={+index}
