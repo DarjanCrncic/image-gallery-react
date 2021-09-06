@@ -4,9 +4,28 @@ import { Carousel } from "3d-react-carousal";
 import InfoContainer from "../Home/InfoContainer";
 import "../Home/carousel.css";
 import { useMediaQuery } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  image: {
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
+    },
+    [theme.breakpoints.up("md")]: {
+      width: "80%",
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "65%",
+    },
+    [theme.breakpoints.up("xl")]: {
+      width: "55%",
+    },
+  },
+}));
 
 const Home = (props) => {
-  const media = useMediaQuery('(max-width:600px)');
+  const classes = useStyles();
+  const media = useMediaQuery("(max-width:600px)");
   const [images, setImages] = useState([]);
 
   useEffect(() => {
@@ -41,7 +60,7 @@ const Home = (props) => {
   ];*/
 
   const slides = images.map((image) => {
-    return <img src={image.path_to_file} alt="preview" style={{width: "55%"}}/>;
+    return <img src={image.path_to_file} alt="preview" className={classes.image}/>;
   });
 
   return (
