@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import PaintingDetails from "../Gallery/PaintingDetails";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import ImageContext from "../../store/image-context";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import "swiper/swiper.scss";
 import "swiper/components/navigation/navigation.min.css";
@@ -17,33 +16,9 @@ SwiperCore.use([Navigation, Pagination]);
 const Paintings = (props) => {
   const media = useMediaQuery("(max-width:1280px)");
   let { index } = useParams();
-
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    let source = axios.CancelToken.source();
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/images/", {
-          cancelToken: source.token,
-        });
-        setImages(response.data);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log(error);
-        } else {
-          throw error;
-        }
-      }
-    };
-    fetchData();
-    return () => {
-      source.cancel();
-    };
-  }, []);
-
-  const body = images.map((imageInfo) => {
+  const ctx = useContext(ImageContext);
+ 
+  const body = ctx.images.map((imageInfo) => {
     return (
       <SwiperSlide key={imageInfo._id}>
         <PaintingDetails imageInfo={imageInfo}></PaintingDetails>

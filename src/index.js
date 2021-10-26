@@ -6,12 +6,15 @@ import App from "./App";
 import "./i18n.js";
 import { CircularProgress } from "@material-ui/core";
 import classes from "./index.module.css";
+import ImageProvider from "./store/ImageProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<CircularProgress className={classes.spinner}/>}>
+    <Suspense fallback={<CircularProgress className={classes.spinner} />}>
       <Router>
-        <App />
+        <ImageProvider>
+          <App />
+        </ImageProvider>
       </Router>
     </Suspense>
   </React.StrictMode>,

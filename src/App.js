@@ -5,8 +5,10 @@ import Gallery from "./components/Pages/Gallery";
 import Contact from "./components/Pages/Contact";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Paintings from "./components/Pages/Paintings";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import ImageContext from "./store/image-context";
 
 const theme = createTheme({
   palette: {
@@ -30,8 +32,30 @@ const theme = createTheme({
 
 function App() {
   const { i18n } = useTranslation();
+  const ctx = useContext(ImageContext);
+
   useEffect(() => {
     i18n.changeLanguage("hr");
+
+    let source = axios.CancelToken.source();
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/images/", {
+          cancelToken: source.token,
+        });
+        ctx.setImages(response.data);
+      } catch (error) {
+        if (axios.isCancel(error)) {
+          console.log(error);
+        } else {
+          throw error;
+        }
+      }
+    };
+    fetchData();
+    return () => {
+      source.cancel();
+    };
   }, []);
 
   return (
