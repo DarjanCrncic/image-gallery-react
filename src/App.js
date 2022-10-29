@@ -35,7 +35,7 @@ const images = [
     id: 1,
     title: "Tulipani",
     description: "Slika crvenih tulipana koji su zapravo makovi.",
-    path_to_file: "/images/makovi.jpg",
+    path_to_file: "images/makovi.jpg",
     painted_at: "2016",
     technique: "akvarel"
   },
@@ -43,7 +43,7 @@ const images = [
     id: 2,
     title: "Drvo u jesen",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non d…",
-    path_to_file: "/images/drvo.jpg",
+    path_to_file: "images/drvo.jpg",
     painted_at: "2016",
     technique: "akvarel"
   },
@@ -51,7 +51,7 @@ const images = [
     id: 3,
     title: "Sestre",
     description: "Sestre Mateja i Iva.",
-    path_to_file: "/images/sestre.jpg",
+    path_to_file: "images/sestre.jpg",
     painted_at: "2017",
     technique: "akvarel"
   },
@@ -59,7 +59,7 @@ const images = [
     id: 4,
     title: "Riba",
     description: "Apstraktna slika ribe.",
-    path_to_file: "/images/riba.jpg",
+    path_to_file: "images/riba.jpg",
     painted_at: "1990",
     technique: "Monotipija"
   },

@@ -1,6 +1,6 @@
 {
   "name": "gallery",
-  "homepage": "https://DarjanCrncic.github.io",
+  "homepage": "https://darjancrncic.github.io/image-gallery-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
