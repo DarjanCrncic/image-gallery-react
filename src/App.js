@@ -30,6 +30,41 @@ const theme = createTheme({
   },
 });
 
+const images = [
+  {
+    id: 1,
+    title: "Tulipani",
+    description: "Slika crvenih tulipana koji su zapravo makovi.",
+    path_to_file: "/images/makovi.jpg",
+    painted_at: "2016",
+    technique: "akvarel"
+  },
+  {
+    id: 2,
+    title: "Drvo u jesen",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non d…",
+    path_to_file: "/images/drvo.jpg",
+    painted_at: "2016",
+    technique: "akvarel"
+  },
+  {
+    id: 3,
+    title: "Sestre",
+    description: "Sestre Mateja i Iva.",
+    path_to_file: "/images/sestre.jpg",
+    painted_at: "2017",
+    technique: "akvarel"
+  },
+  {
+    id: 4,
+    title: "Riba",
+    description: "Apstraktna slika ribe.",
+    path_to_file: "/images/riba.jpg",
+    painted_at: "1990",
+    technique: "Monotipija"
+  },
+];
+
 function App() {
   const { i18n } = useTranslation();
   const ctx = useContext(ImageContext);
@@ -38,20 +73,24 @@ function App() {
     i18n.changeLanguage("hr");
 
     let source = axios.CancelToken.source();
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/images/", {
-          cancelToken: source.token,
-        });
-        ctx.setImages(response.data);
-      } catch (error) {
-        if (axios.isCancel(error)) {
-          console.log(error);
-        } else {
-          throw error;
-        }
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axios.get("/images/", {
+    //       cancelToken: source.token,
+    //     });
+    //     ctx.setImages(response.data);
+    //   } catch (error) {
+    //     if (axios.isCancel(error)) {
+    //       console.log(error);
+    //     } else {
+    //       throw error;
+    //     }
+    //   }
+    // };
+    const fetchData = () => {
+      ctx.setImages(images);
+    }
+
     fetchData();
     return () => {
       source.cancel();
